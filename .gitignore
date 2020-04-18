@@ -56,3 +56,5 @@ coverage
 
 # Benchmarking
 benchmarks/graphs
+express_server/node_modules
+
