@@ -25,9 +25,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // simple inpoint route for get request to a status inpoint.
-app.get('/status', (req, res) =>{
+app.post('/register', (req, res) =>{
     res.send({
-        message: 'Hello darkness my old friend'
+        message: `Hello ${req.body.email} thank you for comming!`
     })
 })
 
