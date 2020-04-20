@@ -2,10 +2,9 @@
 <template>
   <div>
     <h1>Register me</h1>
-    <input v-model="email" type="email" name="name" placeholder="johnDoe@mail.com"/>
-    <br />
-    <input v-model="password" type="password" name="password" placeholder="*******" />
-    <br />
+    <input v-model="email" type="email" name="name" placeholder="johnDoe@mail.com"/><br>
+    <input v-model="password" type="password" name="password" placeholder="*******"/><br>
+    <div class="error" v-html="error"/><br>
     <button @click="register" >Register my friend</button>
   </div>
 </template>
@@ -19,27 +18,32 @@ export default {
     return {
       email: '',
       password: '',
+      error: null,
     };
   },
   // methods called by the buttons or actions
   methods: {
     async register() {
-      const response = await AuthenticationService.register({
-        email: this.email,
-        password: this.password,
-      });
-      console.log(response.data);
+      try {
+        await AuthenticationService.register({
+          email: this.email,
+          password: this.password,
+        });
+        this.error = null;
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     },
   },
   // service that verifies when specific binded object of data changes.
-  watch: {
-    email(value) {
-      console.log('The email changed to', value);
-    },
-  },
+  // watch: {
+  //   email(value) {
+  //     //console.log('The email changed to', value);
+  //   },
+  // },
   // we can also specified handler of other events
   mounted() {
-    console.log('Component "Register" has been mounted');
+    // console.log('Component "Register" has been mounted');
   },
 };
 </script>
@@ -60,5 +64,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.error{
+  color:red;
 }
 </style>
