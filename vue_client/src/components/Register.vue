@@ -1,12 +1,24 @@
 /* eslint-disable no-console */
 <template>
-  <div>
-    <h1>Register me</h1>
+  <!-- This is kind of a grid from vuetify-->
+  <v-layout column>
+    <!-- This is the responsive style for small devices -->
+    <v-flex xs6 offset-xs3>
+      <!-- Container with a small elevations with shaddow -->
+      <div class="white elevation-2">
+        <span>Hello darkness my old friend</span>
+      </div>
+    </v-flex>
+
+  </v-layout>
+
+  <!-- <div>
+    <h1>Register me</h1><br>
     <input v-model="email" type="email" name="name" placeholder="johnDoe@mail.com"/><br>
     <input v-model="password" type="password" name="password" placeholder="*******"/><br>
     <div class="error" v-html="error"/><br>
     <button @click="register" >Register my friend</button>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -67,5 +79,13 @@ a {
 }
 .error{
   color:red;
+}
+input {
+  margin-bottom: 1em;
+}
+* {
+  border-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-width: 2px;
 }
 </style>
